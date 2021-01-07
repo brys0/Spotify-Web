@@ -10,8 +10,8 @@ The server for now will always be hosted on port `8080` on the machine if your a
 
 ```kotlin
 ┌────────────────────────────────────────────Endpoints────────────────────────────────────────────┐
- / | The default home page"))  
- /track | Returns a track json object. Requires a valid track id (/track?id=yourid)"))  
+ / | The default home page
+ /track | Returns a track json object. Requires a valid track id (/track?id=yourid)")
  /playlist | Returns a playlist json object. Requires a valid playlist id (/playlist?id=yourid)
  /album | Returns a album json object. Requires a valid album id (/album?id=yourid)
  /artist | Returns a artist json object. Requires a valid artist id (artist/?id=yourid)
