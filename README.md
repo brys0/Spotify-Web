@@ -26,6 +26,6 @@ Right now currently on this release it only holds data in a HashMap<> or "Cache"
 
 Right now that not possible on the public release it should come out the next 1 or 2 releases however.
 
-> I need a version for NodeJS when will that be coming out?
+> I need a version for `<Insert_Programming_Lang_Here>` when will that be coming out?
 
 Never, unless someone decides to make a version for other programming languages.
