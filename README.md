@@ -4,6 +4,9 @@ A simple and easy to use online webserver for parsing spotify tracks playlists a
 # Welcome to Spotify Web
 ### Lets get started!
 
+> Woah what port is this hosted on?
+The server for now will always be hosted on port `8080` on the machine if your also connecting to it on the same machine just put in your browser (or code) `localhost:8080`
+
 ```kotlin
 ┌────────────────────────────────────────────Endpoints────────────────────────────────────────────┐
  / | The default home page"))  
