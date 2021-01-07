@@ -25,3 +25,7 @@ Right now currently on this release it only holds data in a HashMap<> or "Cache"
 > Can I change the port of the webserver?
 
 Right now that not possible on the public release it should come out the next 1 or 2 releases however.
+
+> I need a version for NodeJS when will that be coming out?
+
+Never, unless someone decides to make a version for other programming languages.
