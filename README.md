@@ -17,3 +17,11 @@ The server for now will always be hosted on port `8080` on the machine if your a
  /artist | Returns a artist json object. Requires a valid artist id (artist/?id=yourid)
  /new | Returns all converted tracks and new hits on spotify
 └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+> Can I change the database?
+
+Right now currently on this release it only holds data in a HashMap<> or "Cache" effectively, However in the future it should be able to use MongoDB and Redis once we get the bugs figured out!
+
+> Can I change the port of the webserver?
+
+Right now that not possible on the public release it should come out the next 1 or 2 releases however.
