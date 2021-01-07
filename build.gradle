@@ -1,0 +1,77 @@
+buildscript {
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:6.1.0"
+    }
+}
+plugins {
+    id 'java'
+    id "org.jetbrains.kotlin.jvm" version "1.4.21"
+    id 'application'
+    id 'org.springframework.boot' version "2.1.2.RELEASE"
+    id 'org.jetbrains.kotlin.plugin.spring' version "1.4.21"
+    id 'org.jetbrains.kotlin.plugin.jpa' version "1.4.21"
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.4.21'
+}
+apply plugin: "com.github.johnrengelman.shadow"
+
+group 'com.brys.dev'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '2.4.0'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.4.0'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.0'
+    compile group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '2.4.0'
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jetty', version: '2.4.1'
+    implementation 'com.adamratzman:spotify-api-kotlin:3.2.14'
+    implementation 'com.github.ajalt:mordant:1.2.1'
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
+}
+
+compileKotlin {
+    sourceCompatibility = 14
+    targetCompatibility = 14
+    kotlinOptions {
+        jvmTarget = "14"
+    }
+}
+
+application {
+    // Define the main class for the application.
+    mainClassName = 'com.brys.dev.ServerKt'
+}
+java {
+    sourceCompatibility = JavaVersion.VERSION_14
+    targetCompatibility = JavaVersion.VERSION_14
+}
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    sourceCompatibility = 14
+    targetCompatibility = 14
+    kotlinOptions.allWarningsAsErrors = false
+    kotlinOptions {
+        jvmTarget = '14'
+    }
+}
+
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "14"
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+shadowJar {
+    archiveBaseName.set('SpotifyServer')
+    archiveClassifier.set("public")
+    archiveVersion.set('1.0.0')
+    zip64 true
+}
