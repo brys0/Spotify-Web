@@ -25,7 +25,7 @@ fun main(args: Array<String>) {
     try {
         runApplication<Application>()
     } catch (e: Exception) {
-        println("${t.brightRed.bg} ${t.black}X ${t.reset} ${t.brightWhite}- Error occurred in main application${t.reset}")
+        println("${t.brightRed.bg} ${t.black}X ${t.reset} ${t.brightWhite}- Error occurred in main application ${t.reset}")
     }
     println("${t.brightYellow.bg} ${t.black}~ ${t.reset} ${t.brightWhite}- Webserver is booting${t.reset}")
     println("${t.rgb("#34eb40").bg} ${t.black}+ ${t.reset} ${t.brightWhite}- Webserver online at localhost:8080${t.reset}")

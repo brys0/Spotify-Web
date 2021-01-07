@@ -37,10 +37,10 @@ dependencies {
 }
 
 compileKotlin {
-    sourceCompatibility = 14
-    targetCompatibility = 14
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
     kotlinOptions {
-        jvmTarget = "14"
+        jvmTarget = "1.8"
     }
 }
 
@@ -53,11 +53,11 @@ java {
     targetCompatibility = JavaVersion.VERSION_14
 }
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-    sourceCompatibility = 14
-    targetCompatibility = 14
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
     kotlinOptions.allWarningsAsErrors = false
     kotlinOptions {
-        jvmTarget = '14'
+        jvmTarget = '1.8'
     }
 }
 
