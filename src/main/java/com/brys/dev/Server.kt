@@ -155,7 +155,7 @@ class ArtistController {
             .append("{")
             .append("\"name\": \"${artist.name}\",")
             .append("\"followers\": \"${artist.followers.total}\",")
-            .append("\"genres\": \"${genres}\",")
+            .append("\"genres\": ${genres},")
             .append("\"image\": \"${artist.images[0].url}\",")
             .append("\"top_tracks\": $tracksJs")
             .append("}")
