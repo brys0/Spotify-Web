@@ -35,57 +35,57 @@ Never, unless someone decides to make a version for other programming languages.
 **Track**
 ```json
 {
-	"name": "",
-	"artwork": "",
-	"artist": "",
+	"name": String,
+	"artwork": String,
+	"artist": String,
 	"popularity": Int,
 	"explicit": Boolean,
 	"duration": Long,
 	"track_num": Int,
-	"converted_trk": ""
+	"converted_trk": String
 }
 ```
 
 **Playlist**
 ```json
 {
-"name": "",
-"owner": "",
-"description": "",
+"name": String,
+"owner": String,
+"description": String,
 "followers": Int,
-"image":"",
-"snapshot": "",
-"tracks": ["",""]
+"image": String,
+"snapshot": String,
+"tracks": Array
 }
 ```
 **Album**
 ```json
 {
-"name": "",
-"artists": "",
-"release_date": "",
+"name": String.
+"artists": String,
+"release_date": String,
 "popularity": Int,
-"image": "",
-"label": "",
+"image": String,
+"label": String,
 "total_tracks": Int,
-"tracks": ["",""]
+"tracks": Array
 }
 ```
 **Artist**
 ```json
 {
-"name": "",
+"name": String,
 "followers": Int,
-"genres": ["",""],
-"image": "",
-"top_tracks": ["",""]
+"genres": Array,
+"image": String,
+"top_tracks": Array
 }
 ```
 
 **New**
 ```json
 {
-"Track_Rec": ["",""]
+"Track_Rec": Array
 }
 ```
 
