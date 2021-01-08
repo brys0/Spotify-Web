@@ -15,6 +15,7 @@ import com.brys.dev.lib.util.Checks
 import com.brys.dev.lib.util.cli
 import com.github.ajalt.mordant.TermColors
 import com.google.gson.Gson
+import java.io.File
 import java.lang.Exception
 @SpringBootApplication(exclude = [DataSourceAutoConfiguration::class, ErrorMvcAutoConfiguration::class])
 class Application()
@@ -38,14 +39,7 @@ class DefaultController {
     @GetMapping(value = ["/"])
     fun default(): String {
         println("${t.brightBlue.bg} ${t.black}- ${t.reset} ${t.white}- Request was made for ${t.brightMagenta}/${t.reset}")
-        return "<div class=\"mainTxt\">" +
-                "Welcome to Spotify Parser</div>" +
-                "<style>body {" +
-                "background: #23272A; }" +
-                ".mainTxt {" +
-                "background: #b19cd9" +
-                "}" +
-                "</style>"
+        return File("index.html").readText()
     }
 }
 
@@ -103,7 +97,7 @@ class PlaylistController {
             .append("\"name\": \"${p?.name}\",")
             .append("\"owner\": \"${p?.owner?.displayName}\",")
             .append("\"description\": \"${p?.description}\",")
-            .append("\"followers\": \"${p?.followers?.total}\",")
+            .append("\"followers\": ${p?.followers?.total},")
             .append("\"image\": \"${p?.images?.get(0)?.url}\",")
             .append("\"snapshot\": \"${p?.snapshot?.snapshotId}\",")
             .append("\"tracks\": $jsonarr")
@@ -122,11 +116,11 @@ class AlbumController {
             .append("{")
             .append("\"name\": \"${a.name}\",")
             .append("\"artists\": \"${a.artists[0].name}\",")
-            .append("\"release_date\": \"${a.releaseDate.year}\",")
-            .append("\"popularity\": \"${a.popularity}\",")
+            .append("\"release_date\": ${a.releaseDate.year},")
+            .append("\"popularity\": ${a.popularity},")
             .append("\"image\": \"${a.images[0].url}\",")
             .append("\"label\": \"${a.label}\",")
-            .append("\"total_tracks\": \"${a.totalTracks}\",")
+            .append("\"total_tracks\": ${a.totalTracks},")
             .append("\"tracks\": $jsonarr")
             .append("}")
     }
@@ -138,7 +132,7 @@ class ArtistController {
         println("${t.brightBlue.bg} ${t.black}- ${t.reset} ${t.white}- Request was made for ${t.brightMagenta}artist${t.reset}${t.white} with artist id: $id${t.reset}")
         val artist = SpotifyWeb.getArtist(id)!!
         val tracks = SpotifyWeb.getAPI().artists.getArtistTopTracks(id).complete()
-        val related = SpotifyWeb.getAPI()?.artists?.getRelatedArtists(id)?.complete()!!
+        val related = SpotifyWeb.getAPI().artists.getRelatedArtists(id).complete()
         val trackList = mutableListOf<String>()
         val relatedList = mutableListOf<String>()
         for (i in 0 until 10) {
@@ -154,7 +148,7 @@ class ArtistController {
         return StringBuilder()
             .append("{")
             .append("\"name\": \"${artist.name}\",")
-            .append("\"followers\": \"${artist.followers.total}\",")
+            .append("\"followers\": ${artist.followers.total},")
             .append("\"genres\": ${genres},")
             .append("\"image\": \"${artist.images[0].url}\",")
             .append("\"top_tracks\": $tracksJs")
