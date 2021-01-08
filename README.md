@@ -31,7 +31,17 @@ Yes you can! just add `-Dserver.port=YourPort` to your startup looking something
 Never, unless someone decides to make a version for other programming languages.
 ### Community Clients
 
-[**NodeJS/TS** `SWWrap`](https://github.com/WubzyGD/SWWrap) - [**WubzyGD**](https://github.com/WubzyGD) 
+[**NodeJS/TS** `SWWrap`](https://github.com/WubzyGD/SWWrap) - [**WubzyGD**](https://github.com/WubzyGD)
+> Will there ever be a lighter version of this webserver available?
+
+Yes! There should be a version coming out that just uses the raw JRE suppport and should shrink the memory usage and jar size by up to 50%
+
+> How can I contribute?
+
+**1st** Fork this repo
+**2nd** Update whatever you were planning
+**3rd** Submit a PR with the tag **UPDATE**
+**4th** Wait.
 > What does each request look like?
 
 **Track**
