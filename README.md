@@ -61,7 +61,7 @@ Never, unless someone decides to make a version for other programming languages.
 **Album**
 ```json
 {
-"name": String.
+"name": String,
 "artists": String,
 "release_date": String,
 "popularity": Int,
