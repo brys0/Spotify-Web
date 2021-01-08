@@ -29,3 +29,63 @@ Yes you can! just add `-Dserver.port=YourPort` to your startup looking something
 > I need a version for `<Insert_Programming_Lang_Here>` when will that be coming out?
 
 Never, unless someone decides to make a version for other programming languages.
+
+> What does each request look like?
+
+**Track**
+```json
+{
+	"name": "",
+	"artwork": "",
+	"artist": "",
+	"popularity": Int,
+	"explicit": Boolean,
+	"duration": Long,
+	"track_num": Int,
+	"converted_trk": ""
+}
+```
+
+**Playlist**
+```json
+{
+"name": "",
+"owner": "",
+"description": "",
+"followers": Int,
+"image":"",
+"snapshot": "",
+"tracks": ["",""]
+}
+```
+**Album**
+```json
+{
+"name": "",
+"artists": "",
+"release_date": "",
+"popularity": Int,
+"image": "",
+"label": "",
+"total_tracks": Int,
+"tracks": ["",""]
+}
+```
+**Artist**
+```json
+{
+"name": "",
+"followers": Int,
+"genres": ["",""],
+"image": "",
+"top_tracks": ["",""]
+}
+```
+
+**New**
+```json
+{
+"Track_Rec": ["",""]
+}
+```
+
