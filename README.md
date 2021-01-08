@@ -49,43 +49,43 @@ Never, unless someone decides to make a version for other programming languages.
 **Playlist**
 ```json
 {
-"name": String,
-"owner": String,
-"description": String,
-"followers": Int,
-"image": String,
-"snapshot": String,
-"tracks": Array
+	"name": String,
+	"owner": String,
+	"description": String,
+	"followers": Int,
+	"image": String,
+	"snapshot": String,
+	"tracks": Array
 }
 ```
 **Album**
 ```json
 {
-"name": String,
-"artists": String,
-"release_date": String,
-"popularity": Int,
-"image": String,
-"label": String,
-"total_tracks": Int,
-"tracks": Array
+	"name": String,
+	"artists": String,
+	"release_date": String,
+	"popularity": Int,
+	"image": String,
+	"label": String,
+	"total_tracks": Int,
+	"tracks": Array
 }
 ```
 **Artist**
 ```json
 {
-"name": String,
-"followers": Int,
-"genres": Array,
-"image": String,
-"top_tracks": Array
+	"name": String,
+	"followers": Int,
+	"genres": Array,
+	"image": String,
+	"top_tracks": Array
 }
 ```
 
 **New**
 ```json
 {
-"Track_Rec": Array
+	"Track_Rec": Array
 }
 ```
 
