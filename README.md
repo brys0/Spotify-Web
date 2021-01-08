@@ -31,7 +31,7 @@ Yes you can! just add `-Dserver.port=YourPort` to your startup looking something
 Never, unless someone decides to make a version for other programming languages.
 > Community Clients
 
-[**NodeJS/TS** `SWWrap`](https://github.com/WubzyGD/SWWrap)
+[**NodeJS/TS** `SWWrap`](https://github.com/WubzyGD/SWWrap) - [**WubzyGD**](https://github.com/WubzyGD) 
 > What does each request look like?
 
 **Track**
