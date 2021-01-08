@@ -24,7 +24,7 @@ Right now currently on this release it only holds data in a HashMap<> or "Cache"
 
 > Can I change the port of the webserver?
 
-Right now that not possible on the public release it should come out the next 1 or 2 releases however.
+Yes you can! just add `-Dserver.port=YourPort` to your startup looking something like this `java -Dserver.port=9090 -jar ./SpotifyWeb-1.0.0.jar` Will run the default web server on port **9090**
 
 > I need a version for `<Insert_Programming_Lang_Here>` when will that be coming out?
 
