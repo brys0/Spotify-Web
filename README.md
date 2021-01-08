@@ -6,7 +6,7 @@ A simple and easy to use online webserver for parsing spotify tracks playlists a
 
 > Woah what port is this hosted on?
 
-The server for now will always be hosted on port `8080` on the machine if your also connecting to it on the same machine just put in your browser (or code) `localhost:8080`
+The server will be hosted on port `8080` (You can change this! ⬇️ look below ⬇️) on the machine if your also connecting to it on the same machine just put in your browser (or code) `localhost:8080`
 
 ```kotlin
 ┌────────────────────────────────────────────Endpoints────────────────────────────────────────────┐
@@ -24,8 +24,80 @@ Right now currently on this release it only holds data in a HashMap<> or "Cache"
 
 > Can I change the port of the webserver?
 
-Right now that not possible on the public release it should come out the next 1 or 2 releases however.
+Yes you can! just add `-Dserver.port=YourPort` to your startup looking something like this `java -Dserver.port=9090 -jar ./SpotifyWeb-1.0.0.jar` Will run the default web server on port **9090**
 
 > I need a version for `<Insert_Programming_Lang_Here>` when will that be coming out?
 
 Never, unless someone decides to make a version for other programming languages.
+### Community Clients
+
+[**NodeJS/TS** `SWWrap`](https://github.com/WubzyGD/SWWrap) - [**WubzyGD**](https://github.com/WubzyGD)
+> Will there ever be a lighter version of this webserver available?
+
+Yes! There should be a version coming out that just uses the raw JRE suppport and should shrink the memory usage and jar size by up to 50%
+
+> How can I contribute?
+
+**1st** Fork this repo
+**2nd** Update whatever you were planning
+**3rd** Submit a PR with the tag **UPDATE**
+**4th** Wait.
+> What does each request look like?
+
+**Track**
+```json
+{
+	"name": String,
+	"artwork": String,
+	"artist": String,
+	"popularity": Int,
+	"explicit": Boolean,
+	"duration": Long,
+	"track_num": Int,
+	"converted_trk": String
+}
+```
+
+**Playlist**
+```json
+{
+	"name": String,
+	"owner": String,
+	"description": String,
+	"followers": Int,
+	"image": String,
+	"snapshot": String,
+	"tracks": Array
+}
+```
+**Album**
+```json
+{
+	"name": String,
+	"artists": String,
+	"release_date": String,
+	"popularity": Int,
+	"image": String,
+	"label": String,
+	"total_tracks": Int,
+	"tracks": Array
+}
+```
+**Artist**
+```json
+{
+	"name": String,
+	"followers": Int,
+	"genres": Array,
+	"image": String,
+	"top_tracks": Array
+}
+```
+
+**New**
+```json
+{
+	"Track_Rec": Array
+}
+```
+
