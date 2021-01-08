@@ -1,4 +1,5 @@
 # Spotify-Web
+![img](https://raw.githubusercontent.com/brys0/Spotify-Web/master/Art/sws-spotify.png)
 A simple and easy to use online webserver for parsing spotify tracks playlists albums artists and more!
 
 # Welcome to Spotify Web
@@ -38,10 +39,12 @@ Yes! There should be a version coming out that just uses the raw JRE suppport an
 
 > How can I contribute?
 
-**1st** Fork this repo
-**2nd** Update whatever you were planning
-**3rd** Submit a PR with the tag **UPDATE**
-**4th** Wait.
+1. Fork this repo
+2. Update whatever you were planning
+3. Submit a PR with the tag **UPDATE**
+4. Wait.
+
+Make sure to read the contributing guidelines too! [`Click Here`](https://github.com/brys0/Spotify-Web/blob/master/CONTRIBUTING.md)
 > What does each request look like?
 
 **Track**
