@@ -42,7 +42,7 @@ Never, unless someone decides to make a version for other programming languages.
 [**NodeJS/TS** `SWWrap`](https://github.com/WubzyGD/SWWrap) - [**WubzyGD**](https://github.com/WubzyGD)
 > Will there ever be a lighter version of this webserver available?
 
-Yes! There should be a version coming out that just uses the raw JRE suppport and should shrink the memory usage and jar size by up to 50%
+Yes! There should be a version coming out that just uses the raw JRE support, and should shrink the memory usage/jar size by up to 50%
 
 > How can I contribute?
 
