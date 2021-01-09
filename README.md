@@ -114,25 +114,32 @@ Make sure to read the contributing guidelines too! [`Click Here`](https://github
 **User**
 ```json
 {
-"name": String,
-"followers": Int,
-"image": String
+	"name": String,
+	"followers": Int,
+	"image": String
+}
+```
+**Categories**
+```json
+{
+	"names": Array,
+	"images": Array,
 }
 ```
 **System/CPU**
 ```json
 {
-"alive": Int,
-"parked": Int
+	"alive": Int,
+	"parked": Int
 }
 ```
 **System/MEM**
 ```json
 {
-"total": String,
-"max": String,
-"available": String,
-"used": String
+	"total": String,
+	"max": String,
+	"available": String,
+	"used": String
 }
 ```
 **System/GC**
