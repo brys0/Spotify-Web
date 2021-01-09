@@ -1,5 +1,5 @@
 # Spotify-Web
-![img](https://raw.githubusercontent.com/brys0/Spotify-Web/master/Art/sws-spotify.png)
+![img](https://raw.githubusercontent.com/brys0/Spotify-Web/v.10.21/Art/sws-v.1.0.21.png)
 A simple and easy to use online webserver for parsing spotify tracks playlists albums artists and more!
 
 # Welcome to Spotify Web
@@ -42,7 +42,7 @@ Never, unless someone decides to make a version for other programming languages.
 [**NodeJS/TS** `SWWrap`](https://github.com/WubzyGD/SWWrap) - [**WubzyGD**](https://github.com/WubzyGD)
 > Will there ever be a lighter version of this webserver available?
 
-Yes! There should be a version coming out that just uses the raw JRE suppport and should shrink the memory usage and jar size by up to 50%
+Yes! There should be a version coming out that just uses the raw JRE support, and should shrink the memory usage/jar size by up to 50%
 
 > How can I contribute?
 
@@ -114,44 +114,53 @@ Make sure to read the contributing guidelines too! [`Click Here`](https://github
 **User**
 ```json
 {
-"name": String,
-"followers": Int,
-"image": String
+	"name": String,
+	"followers": Int,
+	"image": String
+}
+```
+**Categories**
+```json
+{
+	"names": Array,
+	"images": Array,
 }
 ```
 **System/CPU**
 ```json
 {
-"alive": Int,
-"parked": Int
+	"alive": Int,
+	"parked": Int
 }
 ```
 **System/MEM**
 ```json
 {
-"total": String,
-"max": String,
-"available": String,
-"used": String
+	"total": String,
+	"max": String,
+	"available": String,
+	"used": String
 }
 ```
 **System/GC**
 ```json
 {
-"gc": Boolean
+	"gc": Boolean
 }
 ```
 **System/CACHE**
 ```json
 {
-"tracks": Int,
-"playlists": Int,
-"albums": Int
+	"tracks": Int,
+	"playlists": Int,
+	"albums": Int
 }
 ```
 **System/CACHE/CLEAR**
 ```json
 {
-"cache": Boolean
+	"cache": Boolean
 }
 ```
+
+Thats alot of response json 👀
