@@ -111,3 +111,47 @@ Make sure to read the contributing guidelines too! [`Click Here`](https://github
 }
 ```
 
+**User**
+```json
+{
+"name": String,
+"followers": Int,
+"image": String
+}
+```
+**System/CPU**
+```json
+{
+"alive": Int,
+"parked": Int
+}
+```
+**System/MEM**
+```json
+{
+"total": String,
+"max": String,
+"available": String,
+"used": String
+}
+```
+**System/GC**
+```json
+{
+"gc": Boolean
+}
+```
+**System/CACHE**
+```json
+{
+"tracks": Int,
+"playlists": Int,
+"albums": Int
+}
+```
+**System/CACHE/CLEAR**
+```json
+{
+"cache": Boolean
+}
+```
