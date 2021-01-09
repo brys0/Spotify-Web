@@ -63,7 +63,7 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\KJar-2.0.0-personal.jar
+set CLASSPATH=%APP_HOME%\lib\SpotifyServer-1.0.0-public.jar
 
 @rem Execute SpotifyWeb
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %SPOTIFY_WEB_OPTS%  -jar "%CLASSPATH%" %CMD_LINE_ARGS%
