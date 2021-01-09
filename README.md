@@ -1,5 +1,5 @@
 # Spotify-Web
-![img](https://raw.githubusercontent.com/brys0/Spotify-Web/master/Art/sws-spotify.png)
+![img](https://raw.githubusercontent.com/brys0/Spotify-Web/v.10.21/Art/sws-v.1.0.21.png)
 A simple and easy to use online webserver for parsing spotify tracks playlists albums artists and more!
 
 # Welcome to Spotify Web
