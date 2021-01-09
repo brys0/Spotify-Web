@@ -145,20 +145,20 @@ Make sure to read the contributing guidelines too! [`Click Here`](https://github
 **System/GC**
 ```json
 {
-"gc": Boolean
+	"gc": Boolean
 }
 ```
 **System/CACHE**
 ```json
 {
-"tracks": Int,
-"playlists": Int,
-"albums": Int
+	"tracks": Int,
+	"playlists": Int,
+	"albums": Int
 }
 ```
 **System/CACHE/CLEAR**
 ```json
 {
-"cache": Boolean
+	"cache": Boolean
 }
 ```
