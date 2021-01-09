@@ -24,7 +24,7 @@ The server will be hosted on port `8080` (You can change this! ⬇️ look below
  /system/gc          │ Calls the jvm to attempting to garbage collect
  /system/cache       │ Returns cache stats
  /system/cache/clear │ Clears all cache
-└────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+└──────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 
