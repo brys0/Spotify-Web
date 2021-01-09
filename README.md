@@ -17,7 +17,7 @@ The server will be hosted on port `8080` (You can change this! ⬇️ look below
  /album              │ Returns a album json object. Requires a valid album id (/album?id=yourid)
  /artist             │ Returns a artist json object. Requires a valid artist id (artist/?id=yourid)
  /new                │ Returns all converted tracks and new hits on spotify
- /categories         │Get all categories and their names / images
+ /categories         │ Get all categories and their names / images
  /user               │ Returns a user json object. Requires a valid username (/user?name=YourUsername)
  /system/cpu         │ Returns cpu thread stats
  /system/mem         │ Returns memory stats
