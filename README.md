@@ -11,21 +11,23 @@ The server will be hosted on port `8080` (You can change this! ⬇️ look below
 
 ```kotlin
 ┌────────────────────────────────────────────────Endpoints────────────────────────────────────────────────┐
- /                   | The default home page
- /track              | Returns a track json object. Requires a valid track id (/track?id=yourid)
- /playlist           | Returns a playlist json object. Requires a valid playlist id (/playlist?id=yourid)
- /album              | Returns a album json object. Requires a valid album id (/album?id=yourid)
- /artist             | Returns a artist json object. Requires a valid artist id (artist/?id=yourid)
- /new                | Returns all converted tracks and new hits on spotify
- /categories         | Get all categories and their names / images
- /user               | Returns a user json object. Requires a valid username (/user?name=YourUsername)
- /system/cpu         | Returns cpu thread stats
- /system/mem         | Returns memory stats
- /system/gc          | Calls the jvm to attempting to garbage collect
- /system/cache       | Returns cache stats
- /system/cache/clear | Clears all cache
+ /                   │ The default home page
+ /track              │ Returns a track json object. Requires a valid track id (/track?id=yourid)
+ /playlist           │ Returns a playlist json object. Requires a valid playlist id (/playlist?id=yourid)
+ /album              │ Returns a album json object. Requires a valid album id (/album?id=yourid)
+ /artist             │ Returns a artist json object. Requires a valid artist id (artist/?id=yourid)
+ /new                │ Returns all converted tracks and new hits on spotify
+ /categories         │Get all categories and their names / images
+ /user               │ Returns a user json object. Requires a valid username (/user?name=YourUsername)
+ /system/cpu         │ Returns cpu thread stats
+ /system/mem         │ Returns memory stats
+ /system/gc          │ Calls the jvm to attempting to garbage collect
+ /system/cache       │ Returns cache stats
+ /system/cache/clear │ Clears all cache
 └────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
+
+
 > Can I change the database?
 
 Right now currently on this release it only holds data in a HashMap<> or "Cache" effectively, However in the future it should be able to use MongoDB and Redis once we get the bugs figured out!
