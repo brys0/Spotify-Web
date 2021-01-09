@@ -1,9 +1,6 @@
 package com.brys.dev.api
 import com.adamratzman.spotify.SpotifyAppApi
-import com.adamratzman.spotify.models.Album
-import com.adamratzman.spotify.models.Artist
-import com.adamratzman.spotify.models.Playlist
-import com.adamratzman.spotify.models.SimpleAlbum
+import com.adamratzman.spotify.models.*
 import com.adamratzman.spotify.spotifyAppApi
 import com.github.ajalt.mordant.TermColors
 import org.json.simple.parser.JSONParser
@@ -119,6 +116,38 @@ object SpotifyWeb{
         }
         return list
     }
+    fun returnbrowseGenreImages(): MutableList<String> {
+        val categories = uniapi.browse.getCategoryList().complete()
+        val list = mutableListOf<SpotifyCategory>()
+        for (i in 0 until categories.size) {
+            val category = categories[i]
+            list.add(i, category)
+        }
+        val imgList = mutableListOf<String>()
+        for (i in 0 until list.size) {
+            val image = list[i].icons[0].url
+
+            imgList.add(i, image)
+        }
+        return imgList
+    }
+    fun returnbrowseGenreNames(): MutableList<String> {
+        val categories = uniapi.browse.getCategoryList().complete()
+        val list = mutableListOf<SpotifyCategory>()
+        for (i in 0 until categories.size) {
+            val category = categories[i]
+            list.add(i, category)
+        }
+        val namesList = mutableListOf<String>()
+        for (i in 0 until list.size) {
+            val name = list[i].name
+           namesList.add(i, name)
+        }
+        return namesList
+    }
+    fun getUser(user: String): SpotifyPublicUser? {
+        return uniapi.users.getProfile(user).complete()
+    }
     /**
      * Returns the instituted API
      */
@@ -154,3 +183,10 @@ object SpotifyWeb{
         return arrayOf(public, private)
     }
 }
+object methods {
+    val top = SpotifyWeb.getTop()
+    val new = SpotifyWeb.getTopTracks()
+    val categoryImages = SpotifyWeb.returnbrowseGenreImages()
+    val categoryNames = SpotifyWeb.returnbrowseGenreNames()
+}
+
