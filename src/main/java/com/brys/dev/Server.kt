@@ -336,7 +336,7 @@ class Artist {
             SpotifyWeb.albumTracksCache.clear()
             return StringBuilder()
                 .append("{")
-                .append("\"cache\": true,")
+                .append("\"cache\": true")
                 .append("}")
         }
     }
