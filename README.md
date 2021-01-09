@@ -162,3 +162,5 @@ Make sure to read the contributing guidelines too! [`Click Here`](https://github
 	"cache": Boolean
 }
 ```
+
+Thats alot of response json 👀
