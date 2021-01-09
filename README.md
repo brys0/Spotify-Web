@@ -149,7 +149,7 @@ Make sure to read the contributing guidelines too! [`Click Here`](https://github
 "albums": Int
 }
 ```
-**System/CACHE/CLEAR
+**System/CACHE/CLEAR**
 ```json
 {
 "cache": Boolean
