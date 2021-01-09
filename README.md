@@ -10,7 +10,7 @@ A simple and easy to use online webserver for parsing spotify tracks playlists a
 The server will be hosted on port `8080` (You can change this! ⬇️ look below ⬇️) on the machine if your also connecting to it on the same machine just put in your browser (or code) `localhost:8080`
 
 ```kotlin
-┌────────────────────────────────────────────────Endpoints────────────────────────────────────────────────┐
+┌───────────────────────────────────────────────Endpoints───────────────────────────────────────────────┐
  /                   │ The default home page
  /track              │ Returns a track json object. Requires a valid track id (/track?id=yourid)
  /playlist           │ Returns a playlist json object. Requires a valid playlist id (/playlist?id=yourid)
