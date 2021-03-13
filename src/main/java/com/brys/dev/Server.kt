@@ -271,6 +271,40 @@ class Artist {
         }
     }
     @RestController
+    class Search {
+        @GetMapping(value = ["/search"])
+        fun search(@RequestParam(value = "q") query: String): StringBuilder {
+            println("${t.brightBlue.bg} ${t.black}- ${t.reset} ${t.white}- Request was made for ${t.brightMagenta}search ${t.gray}with query ${t.white}$query ${t.reset}${t.white}")
+            val search = SpotifyWeb.getTrackViaName(query)
+            val json = StringBuilder()
+            json.append("{ \"search\": [ ")
+            if (search.isNotEmpty()) {
+                for (i in search) {
+                    val isComma = if (i == search.last()) "" else ","
+                    json.append("{")
+                        .append("\"name\": \"${i?.name}\",")
+                        .append("\"artwork\": \"${i?.album?.images?.get(0)?.url}\",")
+                        .append("\"artist\": \"${i?.artists?.get(0)?.name}\",")
+                        .append("\"popularity\": ${i?.popularity},")
+                        .append("\"explicit\": ${i?.explicit},")
+                        .append("\"duration\": ${i?.durationMs},")
+                        .append("\"track_num\": ${i?.trackNumber},")
+                        .append(
+                            "\n\"converted_trk\": \"${i?.name} - ${
+                                i?.artists?.get(
+                                    0
+                                )?.name
+                            }\""
+                        )
+                        .append("}$isComma")
+                }
+
+            }
+            json.append("]}")
+            return json
+        }
+    }
+    @RestController
     class CPU {
         @GetMapping(value = ["/system/cpu"])
         fun gpu(): StringBuilder? {

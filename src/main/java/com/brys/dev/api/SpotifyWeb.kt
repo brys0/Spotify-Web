@@ -2,6 +2,7 @@ package com.brys.dev.api
 import com.adamratzman.spotify.SpotifyAppApi
 import com.adamratzman.spotify.models.*
 import com.adamratzman.spotify.spotifyAppApi
+import com.brys.dev.lib.util.models.SearchRequest
 import com.github.ajalt.mordant.TermColors
 import org.json.simple.parser.JSONParser
 import java.io.File
@@ -21,7 +22,7 @@ import kotlin.system.exitProcess
  */
 object SpotifyWeb{
     private var conf = conf()
-    private val uniapi = spotifyAppApi(conf[0], conf[1]).build()
+    val uniapi = spotifyAppApi(conf[0], conf[1]).build()
     private val color = TermColors()
     val tracks = HashMap<String, String>()
     val playlistTracks = HashMap<String, MutableList<String>>()
@@ -116,6 +117,10 @@ object SpotifyWeb{
         }
         return list
     }
+    fun getTrackViaName(str: String): List<Track?> {
+        val browse = uniapi.search.searchTrack(str, 5).complete()
+         return browse.toList()
+        }
     fun returnbrowseGenreImages(): MutableList<String> {
         val categories = uniapi.browse.getCategoryList().complete()
         val list = mutableListOf<SpotifyCategory>()
