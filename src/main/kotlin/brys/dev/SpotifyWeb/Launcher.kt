@@ -25,7 +25,10 @@ suspend fun main() {
         return
     }
     try {
-        keyManager.getKey()
+        val key = keyManager.getKey()
+        if (key.isEmpty()) {
+            keyManager.makeStaticKey(config.keySize.toInt())
+        }
     } catch (e: NullPointerException) {
         keyManager.makeStaticKey(config.keySize.toInt())
     }
