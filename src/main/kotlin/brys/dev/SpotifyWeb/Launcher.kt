@@ -53,7 +53,7 @@ suspend fun main() {
     Server(config, keyManager, spotify).setup()
     Runtime.getRuntime().addShutdownHook(object : Thread() {
         override fun run() {
-            logger.failure("Shutting Down", "SERVER", false)
+            logger.failure("[SHUTDOWN] Shutting Down", "SERVER", false)
         }
     })
 }

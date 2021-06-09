@@ -1,5 +1,6 @@
 package brys.dev.SpotifyWeb.Backend.Auth
 
+import brys.dev.SpotifyWeb.Backend.Auth.Backup.EnvConfigManager
 import brys.dev.SpotifyWeb.Backend.Auth.data.ConfigData
 import org.json.simple.JSONObject
 import org.json.simple.parser.JSONParser
@@ -11,7 +12,7 @@ import kotlin.system.exitProcess
 
 class ConfigManager {
     private val parser = JSONParser()
-    val data = ConfigData
+    var data = ConfigData
     fun initData(): ConfigData? {
        when (File("./conf.json").exists()) {
            true -> {
@@ -33,12 +34,16 @@ class ConfigManager {
            }
            false -> {
                try {
-                   File("./conf.json").createNewFile()
-                   val writer = FileWriter("./conf.json")
-                   writer.write(File("./resources/typing.json").readText())
-                   writer.close()
+                   if (EnvConfigManager().checkData()) {
+                       data = EnvConfigManager().data
+                   } else {
+                       File("./conf.json").createNewFile()
+                       val writer = FileWriter("./conf.json")
+                       writer.write(File("./resources/typing.json").readText())
+                       writer.close()
+                   }
                } catch (e: Exception) {
-                   println()
+                   e.printStackTrace()
                }
            }
        }

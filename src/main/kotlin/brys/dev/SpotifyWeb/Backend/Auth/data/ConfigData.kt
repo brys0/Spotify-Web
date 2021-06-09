@@ -1,6 +1,6 @@
 package brys.dev.SpotifyWeb.Backend.Auth.data
 
-data class ConfigData(val public: String, val private: String, val useRotatingKeys: Boolean, val keySize: Long, val port: Long) {
+data class ConfigData(var public: String, var private: String, var useRotatingKeys: Boolean, var keySize: Long, var port: Long) {
     /**
      * Companion object for ConfigData used for initialization
      */
