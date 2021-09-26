@@ -2,13 +2,14 @@ package brys.dev.SpotifyWeb.Backend.Controllers.admin
 
 import brys.dev.SpotifyWeb.Backend.Cache.CacheManager
 import brys.dev.SpotifyWeb.Backend.Controllers.types.GenericControllerImpl
+import com.fasterxml.jackson.databind.ObjectMapper
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.response.*
 import io.ktor.util.pipeline.*
 
 class CacheController(private val cache: CacheManager, private val key: String): GenericControllerImpl {
-    override suspend fun response(call: PipelineContext<Unit, ApplicationCall>) {
+    override suspend fun response(call: PipelineContext<Unit, ApplicationCall>, mapper: ObjectMapper) {
         val auth = call.context.parameters["auth"]
         val reset = call.context.parameters["reset"]
         if (auth == null || auth != key) {

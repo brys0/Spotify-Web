@@ -2,7 +2,6 @@ package brys.dev.SpotifyWeb.Backend.Auth.Backup
 
 import brys.dev.SpotifyWeb.Backend.Auth.data.ConfigData
 import brys.dev.SpotifyWeb.Server.Util.Util
-import jdk.nashorn.internal.runtime.JSType.toLong
 import java.lang.Exception
 
 class EnvConfigManager() {

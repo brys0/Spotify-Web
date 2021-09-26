@@ -9,6 +9,7 @@ import brys.dev.SpotifyWeb.Backend.Controllers.admin.CacheController
 import brys.dev.SpotifyWeb.Backend.Controllers.admin.MemoryController
 import brys.dev.SpotifyWeb.Server.Util.Util
 import com.adamratzman.spotify.SpotifyAppApi
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.github.ajalt.mordant.TermColors
 import io.ktor.application.*
 import io.ktor.http.*
@@ -23,7 +24,7 @@ import java.io.File
  * Router that handles packet handshakes and the physical server
  * @param router Required by the server class for managing routing
  */
-class Router(private val router: Routing, private val CacheManager: CacheManager, private val KeyManager: KeyManager, private val config: ConfigData, private val spotify: SpotifyWebBackend) {
+class Router(private val router: Routing, private val CacheManager: CacheManager, private val KeyManager: KeyManager, private val config: ConfigData, private val spotify: SpotifyWebBackend, private val jackson: ObjectMapper) {
     private val logger = Util.Logger
     private var status = Status.OFFLINE
      fun setup() {
@@ -35,27 +36,29 @@ class Router(private val router: Routing, private val CacheManager: CacheManager
          logger.endHeader(logger.color.brightBlue)
          router {
             get("/") {
-                HomeController().response(this)
+                HomeController().response(this, jackson)
             }
             get("/track") {
-                TrackController(spotify, CacheManager).response(this)
+                TrackController(spotify, CacheManager).response(this, jackson)
             }
             get("/cache") {
-                CacheController(CacheManager, KeyManager().getKey()).response(this)
+                CacheController(CacheManager, KeyManager().getKey()).response(this, jackson)
             }
             get("/memory") {
-                MemoryController(KeyManager().getKey()).response(this)
+                MemoryController(KeyManager().getKey()).response(this, jackson)
             }
             get("/search") {
-                SearchController(spotify, CacheManager).response(this)
+                SearchController(spotify, CacheManager).response(this, jackson)
             }
             get("/playlist") {
-                PlaylistController(spotify, CacheManager).response(this)
+                PlaylistController(spotify, CacheManager).response(this, jackson)
             }
             get("/album") {
-                AlbumController(spotify, CacheManager).response(this)
+                AlbumController(spotify, CacheManager).response(this, jackson)
             }
-
+            get("/new") {
+                NewTracksController(spotify).response(this, jackson)
+            }
         }
     }
     enum class Status {

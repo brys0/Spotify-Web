@@ -7,6 +7,7 @@ import brys.dev.SpotifyWeb.Backend.Cache.CacheManager
 import brys.dev.SpotifyWeb.Backend.Controllers.admin.CacheController
 import brys.dev.SpotifyWeb.Routes.Router
 import com.adamratzman.spotify.SpotifyAppApi
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.github.ajalt.mordant.TermColors
 import io.ktor.application.*
 import io.ktor.response.*
@@ -19,7 +20,7 @@ class Server(val config: ConfigData, val KeyManager: KeyManager, val spotify: Sp
         val cache = CacheManager()
         embeddedServer(Netty, config.port.toInt()) {
             routing {
-                    Router(this, cache, KeyManager, config, spotify).setup()
+                    Router(this, cache, KeyManager, config, spotify, jacksonObjectMapper()).setup()
             }
         }.start(wait = true)
     }

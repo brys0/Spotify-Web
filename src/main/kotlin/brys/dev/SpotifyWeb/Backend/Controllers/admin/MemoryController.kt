@@ -2,13 +2,14 @@ package brys.dev.SpotifyWeb.Backend.Controllers.admin
 
 import brys.dev.SpotifyWeb.Backend.Controllers.types.GenericControllerImpl
 import brys.dev.SpotifyWeb.Server.Util.Util
+import com.fasterxml.jackson.databind.ObjectMapper
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.response.*
 import io.ktor.util.pipeline.*
 
 class MemoryController(private val key: String): GenericControllerImpl {
-    override suspend fun response(call: PipelineContext<Unit, ApplicationCall>) {
+    override suspend fun response(call: PipelineContext<Unit, ApplicationCall>, mapper: ObjectMapper) {
         val auth = call.context.parameters["auth"]
         val gc = call.context.parameters["gc"]
         if (auth == null && gc == null || auth == key && gc == null) {

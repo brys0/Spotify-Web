@@ -2,6 +2,7 @@ plugins {
     java
     kotlin("jvm") version "1.4.31"
     id("com.github.johnrengelman.shadow") version "2.0.4"
+    kotlin("plugin.serialization") version "1.5.20"
 }
 
 group = "brys.dev.SpotifyWeb"
@@ -20,6 +21,9 @@ dependencies {
     implementation("com.googlecode.json-simple:json-simple:1.1.1")
     implementation("com.github.ajalt:mordant:1.2.1")
     implementation("com.adamratzman:spotify-api-kotlin-core:3.6.01")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0-rc2")
+
+
 }
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.suppressWarnings = true
