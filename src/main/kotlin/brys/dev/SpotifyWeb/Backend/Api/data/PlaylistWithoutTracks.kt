@@ -3,7 +3,7 @@ package brys.dev.SpotifyWeb.Backend.Api.data
 import com.adamratzman.spotify.endpoints.client.PlaylistSnapshot
 import com.adamratzman.spotify.models.*
 
-public data class PlaylistWithoutTracks(
+ data class PlaylistWithoutTracks(
     val href: String,
     val id: String,
     val uri: PlaylistUri,
@@ -19,7 +19,7 @@ public data class PlaylistWithoutTracks(
 )
 
 
-public data class PlaylistWithInternalTracks(
+ data class PlaylistWithInternalTracks(
     val href: String,
     val id: String,
     val uri: PlaylistUri,
@@ -30,7 +30,7 @@ public data class PlaylistWithInternalTracks(
     val images: List<SpotifyImage>,
     val name: String,
     val tracks: MutableCollection<PlaylistAudioTrack>,
-    val owner: SpotifyPublicUser,
+    val owner: String?,
     val public: Boolean? = null,
     val type: String
 )

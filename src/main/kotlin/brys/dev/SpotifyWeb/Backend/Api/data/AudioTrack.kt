@@ -17,5 +17,11 @@ data class AudioTrackAcceptableAsJSON(
     val trackNumber: Int,
     val type: String,
     val episode: Boolean? = null,
-    val track: Boolean? = null
+    val track: Boolean? = null,
+    val artists: MutableList<AudioArtistAcceptableAsJSON>?
+)
+data class AudioArtistAcceptableAsJSON(
+    val name: String,
+    val id: String,
+    val uri: String,
 )

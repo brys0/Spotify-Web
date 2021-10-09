@@ -1,5 +1,6 @@
 package brys.dev.SpotifyWeb.Backend.Api
 
+import brys.dev.SpotifyWeb.Backend.Api.data.AudioArtistAcceptableAsJSON
 import brys.dev.SpotifyWeb.Backend.Api.data.AudioTrack
 import brys.dev.SpotifyWeb.Backend.Api.data.AudioTrackAcceptableAsJSON
 import brys.dev.SpotifyWeb.Backend.Auth.data.ConfigData
@@ -8,6 +9,7 @@ import com.adamratzman.spotify.models.Album
 import com.adamratzman.spotify.models.Playlist
 import com.adamratzman.spotify.models.SpotifyPublicUser
 import com.adamratzman.spotify.spotifyAppApi
+import org.junit.Ignore
 
 class SpotifyWebBackend(private val config: ConfigData, SpotifyAppApi: SpotifyAppApi) {
     val app = SpotifyAppApi
@@ -16,7 +18,11 @@ class SpotifyWebBackend(private val config: ConfigData, SpotifyAppApi: SpotifyAp
      * Gets your basic track with audio features attached in a Data Class
      */
     suspend fun getTrack(id: String): AudioTrack? {
-        return app.tracks.getTrack(id)?.let { AudioTrack(AudioTrackAcceptableAsJSON(it.href, it.id, it.uri, it.isPlayable, it.discNumber, it.durationMs, it.explicit, it.name, it.popularity, it.previewUrl, it.trackNumber, it.type, it.episode, it.track), null) }
+        return app.tracks.getTrack(id)?.let {
+            val artists = mutableListOf<AudioArtistAcceptableAsJSON>()
+            it.artists.forEach { a -> artists.add(AudioArtistAcceptableAsJSON(a.name, a.id, a.uri.uri)) }
+            AudioTrack(AudioTrackAcceptableAsJSON(it.href, it.id, it.uri, it.isPlayable, it.discNumber, it.durationMs, it.explicit, it.name, it.popularity, it.previewUrl, it.trackNumber, it.type, it.episode, it.track, artists), null)
+        }
     }
 
     /**
@@ -29,11 +35,13 @@ class SpotifyWebBackend(private val config: ConfigData, SpotifyAppApi: SpotifyAp
     suspend fun searchTracks(query: String, limit: Int, features: Boolean = false): ArrayList<AudioTrack> {
         val tracks = app.search.searchTrack(query, limit).toList()
         val trackList = ArrayList<AudioTrack>()
-        return when (features) {
+         when (features) {
             true -> {
                 for (track in tracks) {
                     val feature = track?.id?.let { app.tracks.getAudioFeatures(it) }
                     track?.let {
+                        val artists = mutableListOf<AudioArtistAcceptableAsJSON>()
+                        it.artists.forEach { a -> artists.add(AudioArtistAcceptableAsJSON(a.name, a.id, a.uri.uri)) }
                         AudioTrack(
                             AudioTrackAcceptableAsJSON(
                                 it.href,
@@ -49,8 +57,8 @@ class SpotifyWebBackend(private val config: ConfigData, SpotifyAppApi: SpotifyAp
                                 it.trackNumber,
                                 it.type,
                                 it.episode,
-                                it.track
-                            ), feature
+                                it.track,
+                            artists), feature
                         )
                     }?.let { trackList.add(it) }
                 }
@@ -59,6 +67,8 @@ class SpotifyWebBackend(private val config: ConfigData, SpotifyAppApi: SpotifyAp
             false -> {
                 for (track in tracks) {
                     track?.let {
+                        val artists = mutableListOf<AudioArtistAcceptableAsJSON>()
+                        it.artists.forEach { a -> artists.add(AudioArtistAcceptableAsJSON(a.name, a.id, a.uri.uri)) }
                         AudioTrack(
                             AudioTrackAcceptableAsJSON(
                                 it.href,
@@ -74,7 +84,8 @@ class SpotifyWebBackend(private val config: ConfigData, SpotifyAppApi: SpotifyAp
                                 it.trackNumber,
                                 it.type,
                                 it.episode,
-                                it.track
+                                it.track,
+                                artists
                             ), null
                         )
                     }?.let { trackList.add(it) }
@@ -102,6 +113,7 @@ class SpotifyWebBackend(private val config: ConfigData, SpotifyAppApi: SpotifyAp
                     spotifyAppApi(config.public, config.private).build()
                 }
                 thread.run()
+                @Suppress
                 thread.stop()
             } catch (e: Exception) {
                 return false

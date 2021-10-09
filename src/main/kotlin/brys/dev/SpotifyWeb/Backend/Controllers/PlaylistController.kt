@@ -1,10 +1,7 @@
 package brys.dev.SpotifyWeb.Backend.Controllers
 
 import brys.dev.SpotifyWeb.Backend.Api.SpotifyWebBackend
-import brys.dev.SpotifyWeb.Backend.Api.data.AudioTrack
-import brys.dev.SpotifyWeb.Backend.Api.data.AudioTrackAcceptableAsJSON
-import brys.dev.SpotifyWeb.Backend.Api.data.PlaylistAudioTrack
-import brys.dev.SpotifyWeb.Backend.Api.data.PlaylistWithInternalTracks
+import brys.dev.SpotifyWeb.Backend.Api.data.*
 import brys.dev.SpotifyWeb.Backend.Cache.CacheManager
 import brys.dev.SpotifyWeb.Backend.Controllers.types.GenericControllerImpl
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -39,6 +36,8 @@ class PlaylistController(private val spotify: SpotifyWebBackend, private val cac
                 if (getFeatures) {
                     for (track in playlist.tracks) {
                         val features = track.track?.id?.let { spotify.app.tracks.getAudioFeatures(it) }!!
+                        val artists = mutableListOf<AudioArtistAcceptableAsJSON>()
+                        track.track!!.asTrack?.artists?.forEach { a -> artists.add(AudioArtistAcceptableAsJSON(a.name, a.id, a.uri.uri)) }
                         tracks.add(
                             PlaylistAudioTrack
                                 (
@@ -56,11 +55,11 @@ class PlaylistController(private val spotify: SpotifyWebBackend, private val cac
                                     track.track?.asTrack?.trackNumber!!,
                                     track.track?.asTrack?.type!!,
                                     track.track?.asTrack?.episode!!,
-                                    track.track?.asTrack?.isLocal!!
-                                ), null),
+                                    track.track?.asTrack?.isLocal!!,
+                                    artists), null),
                                 features = features,
                                 addedAt = track.addedAt,
-                                addedBy = track.addedBy,
+                                addedBy = track.addedBy?.displayName,
                                 thumb = track.videoThumbnail?.url,
                                 primaryColor = track.primaryColor
                             )
@@ -79,7 +78,7 @@ class PlaylistController(private val spotify: SpotifyWebBackend, private val cac
                             playlist.images,
                             playlist.name,
                             tracks,
-                            playlist.owner,
+                            playlist.owner.displayName,
                             playlist.public,
                             playlist.type
                         )
@@ -92,6 +91,8 @@ class PlaylistController(private val spotify: SpotifyWebBackend, private val cac
                     )
                 } else {
                     for (track in playlist.tracks) {
+                        val artists = mutableListOf<AudioArtistAcceptableAsJSON>()
+                        track.track?.asTrack?.artists?.forEach { a -> artists.add(AudioArtistAcceptableAsJSON(a.name, a.id, a.uri.uri)) }
                         tracks.add(
                             PlaylistAudioTrack
                                 (
@@ -109,11 +110,11 @@ class PlaylistController(private val spotify: SpotifyWebBackend, private val cac
                                     track.track?.asTrack?.trackNumber!!,
                                     track.track?.asTrack?.type!!,
                                     track.track?.asTrack?.episode!!,
-                                    track.track?.asTrack?.isLocal!!
-                                ), null),
+                                    track.track?.asTrack?.isLocal!!,
+                                    artists), null),
                                 null,
                                 addedAt = track.addedAt,
-                                addedBy = track.addedBy,
+                                addedBy = track.addedBy?.displayName,
                                 thumb = track.videoThumbnail?.url,
                                 primaryColor = track.primaryColor
                             )
@@ -131,7 +132,7 @@ class PlaylistController(private val spotify: SpotifyWebBackend, private val cac
                             playlist.images,
                             playlist.name,
                             tracks,
-                            playlist.owner,
+                            playlist.owner.displayName,
                             playlist.public,
                             playlist.type
                         )
@@ -155,6 +156,8 @@ class PlaylistController(private val spotify: SpotifyWebBackend, private val cac
                         )
                         for (track in playlist.tracks) {
                             val features = track.track?.id?.let { spotify.app.tracks.getAudioFeatures(it) }!!
+                            val artists = mutableListOf<AudioArtistAcceptableAsJSON>()
+                            track.track!!.asTrack?.artists?.forEach { a -> artists.add(AudioArtistAcceptableAsJSON(a.name, a.id, a.uri.uri)) }
                             tracks.add(
                                 PlaylistAudioTrack
                                     (
@@ -172,11 +175,12 @@ class PlaylistController(private val spotify: SpotifyWebBackend, private val cac
                                         track.track?.asTrack?.trackNumber!!,
                                         track.track?.asTrack?.type!!,
                                         track.track?.asTrack?.episode!!,
-                                        track.track?.asTrack?.isLocal!!
+                                        track.track?.asTrack?.isLocal!!,
+                                        artists
                                     ), null),
                                     features = features,
                                     addedAt = track.addedAt,
-                                    addedBy = track.addedBy,
+                                    addedBy = track.addedBy?.displayName,
                                     thumb = track.videoThumbnail?.url,
                                     primaryColor = track.primaryColor
                                 )
@@ -194,7 +198,7 @@ class PlaylistController(private val spotify: SpotifyWebBackend, private val cac
                                 playlist.images,
                                 playlist.name,
                                 tracks,
-                                playlist.owner,
+                                playlist.owner.displayName,
                                 playlist.public,
                                 playlist.type
                             )
@@ -221,6 +225,8 @@ class PlaylistController(private val spotify: SpotifyWebBackend, private val cac
             )
             val tracks = ArrayList<PlaylistAudioTrack>()
             for (track in playlist.tracks) {
+                val artists = mutableListOf<AudioArtistAcceptableAsJSON>()
+                track.track?.asTrack?.artists?.forEach { a -> artists.add(AudioArtistAcceptableAsJSON(a.name, a.id, a.uri.uri)) }
                 tracks.add(
                     PlaylistAudioTrack
                         (
@@ -238,11 +244,12 @@ class PlaylistController(private val spotify: SpotifyWebBackend, private val cac
                             track.track?.asTrack?.trackNumber!!,
                             track.track?.asTrack?.type!!,
                             track.track?.asTrack?.episode!!,
-                            track.track?.asTrack?.isLocal!!
+                            track.track?.asTrack?.isLocal!!,
+                            artists
                         ), null),
                         null,
                         addedAt = track.addedAt,
-                        addedBy = track.addedBy,
+                        addedBy = track.addedBy?.displayName,
                         thumb = track.videoThumbnail?.url,
                         primaryColor = track.primaryColor
                     )
@@ -260,7 +267,7 @@ class PlaylistController(private val spotify: SpotifyWebBackend, private val cac
                     playlist.images,
                     playlist.name,
                     tracks,
-                    playlist.owner,
+                    playlist.owner.displayName,
                     playlist.public,
                     playlist.type
                 )

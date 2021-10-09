@@ -56,9 +56,7 @@ class TrackController(private val spotify: SpotifyWebBackend, private val cache:
                     status = HttpStatusCode.OK,
                     text = "{\"message\": \"No track with that id was found\"}"
                 )
-                val payload = mapper.writeValueAsString(object {
-                    val track = audioTrack
-                })
+                val payload = mapper.writeValueAsString(audioTrack)
                 cache.getTrackCache()[id] = payload
                 call.context.respondText(contentType = ContentType.Application.Json, text = payload)
             } else {
