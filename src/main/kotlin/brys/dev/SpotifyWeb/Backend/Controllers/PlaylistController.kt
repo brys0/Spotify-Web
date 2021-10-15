@@ -24,7 +24,7 @@ class PlaylistController(private val spotify: SpotifyWebBackend, private val cac
                 text = "{\"message\": \"Playlist ID Required\"}"
             )
             val new = call.context.parameters["skipcache"].isNullOrEmpty()
-            val getFeatures = call.context.parameters["features"].isNullOrEmpty()
+            val getFeatures = !call.context.parameters["features"].isNullOrEmpty()
 
             if (new) {
                 val playlist = spotify.getPlaylist(id) ?: return call.context.respondText(
